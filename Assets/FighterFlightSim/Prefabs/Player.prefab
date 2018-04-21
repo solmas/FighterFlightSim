@@ -2119,7 +2119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406923916236424}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 9, y: 1, z: 0}
+  m_LocalPosition: {x: -2.391, y: 1, z: -0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4501823155231890}
@@ -2166,7 +2166,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2208,9 +2208,10 @@ AudioSource:
   m_GameObject: {fileID: 1406923916236424}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243813736673723466, guid: b482c582354d5f04ca6cf93ae3fd3f77,
+    type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2410,6 +2411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9952267c3e253c843ada3b1c08c369a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  punchCooldownTime: 0.3
+  punchable:
+    serializedVersion: 2
+    m_Bits: 512
+  punchForce: 10
 --- !u!124 &124869132547642426
 Behaviour:
   m_ObjectHideFlags: 1
@@ -2624,7 +2630,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.8
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
