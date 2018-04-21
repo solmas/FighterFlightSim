@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    [SerializeField] private float punchCooldownTime = 0.3f;
+    private float punchCooldownTime = 0.5f;
     [SerializeField] private LayerMask punchable;
     [SerializeField] private float punchForce = 10f;
 
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 
         int hitCount = Physics.SphereCastNonAlloc(
             playerCamera.transform.position,
-            0.5f,
+            0.1f,
             playerCamera.transform.forward,
             punchHitResults,
             5f,

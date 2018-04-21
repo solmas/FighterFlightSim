@@ -8,14 +8,112 @@ public class Passenger : MonoBehaviour {
     private AudioSource audioSource;
 
     [SerializeField] private AudioClip hitSfx;
+    [SerializeField] private AudioClip grumbleSfx;
 
-	void Start () {
+    private float gruntRadius = 10f;
+
+    private float surlyLevel = 0f;
+    private float surlyGrowRate = 0.1f;
+
+    private readonly float SURLY_LEVEL_1 = 1f;
+    private readonly float SURLY_LEVEL_2 = 2f;
+    private readonly float SURLY_LEVEL_3 = 3f;
+
+    protected enum State {
+        CALM,
+        SURLY_1,
+        SURLY_2,
+        SURLY_3
+    }
+
+    protected State currentState = State.CALM;
+
+    void Start () {
         passengerAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 	}
-	
+
+    void Update() {
+        UpdateSurlyness();    
+    }
+
+    private void UpdateSurlyness() {
+        if (surlyLevel < SURLY_LEVEL_1) { // surly leve 0-1
+            HandleCalmState();
+        }
+        else if (surlyLevel < SURLY_LEVEL_2) { // surly level 1-2
+            HandleSurlyLvl1();
+        }
+        else if (surlyLevel < SURLY_LEVEL_3) { // surly level 2-3
+            HandleSurlyLvl2();
+        }
+        else { // surly level 3+
+            HandleSurlyLvl3();
+        }
+
+        surlyLevel += surlyGrowRate * Time.deltaTime;
+    }
+
+    private void HandleCalmState() {
+        if (currentState == State.CALM) return;
+
+        Debug.Log(name + " has returned to calm state");
+
+        surlyGrowRate = 0.01f;
+
+        currentState = State.CALM;
+    }
+
+    [SerializeField] private LayerMask affectedByGrunt;
+    private Collider[] gruntColliders = new Collider[16];
+
+    private void HandleSurlyLvl1() {
+        if (currentState == State.SURLY_1) return;
+
+        Debug.Log(name + " has reached SURLY LEVEL 1");
+
+        /*
+        int count = Physics.OverlapSphereNonAlloc(transform.position, gruntRadius, gruntColliders, affectedByGrunt);
+        if (count > 0) {
+            audioSource.pitch = Random.Range(.90f, 1.05f);
+            audioSource.clip = grumbleSfx;
+            audioSource.Play();
+
+            for (int i=0; i<count; ++i) {
+                gruntColliders[i].GetComponentInParent<Passenger>().AddSurly(0.2f);
+            }
+        }
+        */
+
+        currentState = State.SURLY_1;
+    }
+
+    private void HandleSurlyLvl2() {
+        if (currentState == State.SURLY_2) return;
+
+        Debug.Log(name + " has reached SURLY LEVEL 2");
+
+        currentState = State.SURLY_2;
+    }
+
+    private void HandleSurlyLvl3() {
+        if (currentState == State.SURLY_3) return;
+
+        Debug.Log(name + " has reached SURLY LEVEL 3");
+
+        currentState = State.SURLY_3;
+    }
+
+    public void AddSurly(float amount) {
+        surlyLevel += amount;
+    }
+
     public void TakeHit() {
         passengerAnimator.enabled = false;
+
+        surlyLevel -= 1f;
+
+        if (surlyLevel < 0f) surlyLevel = 0f;
 
         audioSource.pitch = Random.Range(.90f, 1.05f);
         audioSource.clip = hitSfx;
@@ -28,5 +126,10 @@ public class Passenger : MonoBehaviour {
     private IEnumerator ResetHit() {
         yield return new WaitForSeconds(2f);
         passengerAnimator.enabled = true;
+    }
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, gruntRadius);
     }
 }

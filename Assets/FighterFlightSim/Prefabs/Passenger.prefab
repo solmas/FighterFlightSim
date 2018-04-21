@@ -2408,7 +2408,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091add8755f24b8498ff563393f0344f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSfx: {fileID: 8300000, guid: a1b9a2ed46d226e4f90dbd3eef083e46, type: 3}
+  hitSfx: {fileID: 8300000, guid: 643efa598e2bb984ca9d369a901a52cb, type: 3}
+  grumbleSfx: {fileID: 0}
+  affectedByGrunt:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!135 &135905138950902062
 SphereCollider:
   m_ObjectHideFlags: 1
