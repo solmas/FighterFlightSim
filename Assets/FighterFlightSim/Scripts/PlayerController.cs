@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
         if (hitCount > 0) {
             punchHitResults[0].transform.GetComponentInParent<Passenger>().TakeHit();
             for (int i=0; i<hitCount; ++i) {
-                Debug.Log("Hit: " + punchHitResults[i].transform.name);
+                //Debug.Log("Hit: " + punchHitResults[i].transform.name);
                 punchHitResults[i].rigidbody.AddForceAtPosition(playerCamera.transform.forward * punchForce, punchHitResults[i].point, ForceMode.Impulse);
             }
         }
