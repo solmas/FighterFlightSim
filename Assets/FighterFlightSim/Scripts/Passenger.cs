@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Passenger : MonoBehaviour {
 
-    private Animator passengerAnimator;
-    private AudioSource audioSource;
+    protected Animator passengerAnimator;
+    protected AudioSource audioSource;
 
-    [SerializeField] private AudioClip hitSfx;
-    [SerializeField] private AudioClip grumbleSfx;
+    [SerializeField] protected AudioClip hitSfx;
+    [SerializeField] protected AudioClip grumbleSfx;
 
-    private float gruntRadius = 10f;
+    protected float gruntRadius = 10f;
 
-    private float surlyLevel = 0f;
-    private float surlyGrowRate = 0.01f;
+    protected float surlyLevel = 0f;
+    protected float surlyGrowRate = 0.01f;
 
-    private readonly float SURLY_LEVEL_1 = 1f;
-    private readonly float SURLY_LEVEL_2 = 2f;
-    private readonly float SURLY_LEVEL_3 = 3f;
+    protected readonly float SURLY_LEVEL_1 = 1f;
+    protected readonly float SURLY_LEVEL_2 = 2f;
+    protected readonly float SURLY_LEVEL_3 = 3f;
 
     protected enum State {
         CALM,
@@ -37,7 +37,7 @@ public class Passenger : MonoBehaviour {
         UpdateSurlyness();    
     }
 
-    private void UpdateSurlyness() {
+    protected void UpdateSurlyness() {
         if (surlyLevel < SURLY_LEVEL_1) { // surly leve 0-1
             HandleCalmState();
         }
@@ -54,7 +54,7 @@ public class Passenger : MonoBehaviour {
         surlyLevel += surlyGrowRate * Time.deltaTime;
     }
 
-    private void HandleCalmState() {
+    protected void HandleCalmState() {
         if (currentState == State.CALM) return;
 
         Debug.Log(name + " has returned to calm state");
@@ -64,10 +64,10 @@ public class Passenger : MonoBehaviour {
         currentState = State.CALM;
     }
 
-    [SerializeField] private LayerMask affectedByGrunt;
-    private Collider[] gruntColliders = new Collider[16];
+    [SerializeField] protected LayerMask affectedByGrunt;
+    protected Collider[] gruntColliders = new Collider[16];
 
-    private void HandleSurlyLvl1() {
+    protected void HandleSurlyLvl1() {
         if (currentState == State.SURLY_1) return;
 
         Debug.Log(name + " has reached SURLY LEVEL 1");
@@ -88,7 +88,7 @@ public class Passenger : MonoBehaviour {
         currentState = State.SURLY_1;
     }
 
-    private void HandleSurlyLvl2() {
+    protected void HandleSurlyLvl2() {
         if (currentState == State.SURLY_2) return;
 
         Debug.Log(name + " has reached SURLY LEVEL 2");
@@ -96,7 +96,7 @@ public class Passenger : MonoBehaviour {
         currentState = State.SURLY_2;
     }
 
-    private void HandleSurlyLvl3() {
+    protected void HandleSurlyLvl3() {
         if (currentState == State.SURLY_3) return;
 
         Debug.Log(name + " has reached SURLY LEVEL 3");

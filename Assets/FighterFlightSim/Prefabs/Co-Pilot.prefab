@@ -764,8 +764,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4301418935885198}
   - component: {fileID: 95467297998014734}
-  - component: {fileID: 114749581130613466}
   - component: {fileID: 82934846475938260}
+  - component: {fileID: 114857212860871042}
   m_Layer: 9
   m_Name: Co-Pilot
   m_TagString: Untagged
@@ -2397,7 +2397,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114749581130613466
+--- !u!114 &114857212860871042
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2405,10 +2405,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1682531647857322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 091add8755f24b8498ff563393f0344f, type: 3}
+  m_Script: {fileID: 11500000, guid: 17e7f2fb4c779d746abedf1c252e6045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSfx: {fileID: 8300000, guid: 643efa598e2bb984ca9d369a901a52cb, type: 3}
+  hitSfx: {fileID: 8300000, guid: e27387ae82afa6b4fa879923cf65f4e7, type: 3}
   grumbleSfx: {fileID: 0}
   affectedByGrunt:
     serializedVersion: 2
