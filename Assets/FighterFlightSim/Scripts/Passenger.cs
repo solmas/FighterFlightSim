@@ -13,7 +13,7 @@ public class Passenger : MonoBehaviour {
     private float gruntRadius = 10f;
 
     private float surlyLevel = 0f;
-    private float surlyGrowRate = 0.1f;
+    private float surlyGrowRate = 0.01f;
 
     private readonly float SURLY_LEVEL_1 = 1f;
     private readonly float SURLY_LEVEL_2 = 2f;
@@ -83,7 +83,7 @@ public class Passenger : MonoBehaviour {
                 gruntColliders[i].GetComponentInParent<Passenger>().AddSurly(0.2f);
             }
         }
-        */
+        //*/
 
         currentState = State.SURLY_1;
     }

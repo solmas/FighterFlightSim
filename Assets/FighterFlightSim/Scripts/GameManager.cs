@@ -41,4 +41,11 @@ public class GameManager : MonoBehaviour {
     private void InitGame() {
         m_Canvas = GameObject.Find("Canvas");
     }
+
+    private bool hasGameOverStarted = false;
+    private void HandleGameOver() {
+        if (hasGameOverStarted) return;
+
+        hasGameOverStarted = true;
+    }
 }

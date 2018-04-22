@@ -1259,7 +1259,7 @@ Transform:
   m_GameObject: {fileID: 1148121886808908}
   m_LocalRotation: {x: 0, y: -0, z: -2.3158745e-36, w: 1}
   m_LocalPosition: {x: -0.000000023707482, y: 0.1032183, z: 0.031424288}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4527725495525638}
   - {fileID: 4982046963632424}
@@ -2411,7 +2411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9952267c3e253c843ada3b1c08c369a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchCooldownTime: 0.3
   punchable:
     serializedVersion: 2
     m_Bits: 512
@@ -2635,4 +2634,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.1, z: 0}
